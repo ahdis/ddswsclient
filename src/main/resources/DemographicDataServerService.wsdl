@@ -1,0 +1,812 @@
+<definitions name='DemographicDataServerService' targetNamespace='http://ws.demographic.gazelle.ihe.net/' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://ws.demographic.gazelle.ihe.net/' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='http://ws.demographic.gazelle.ihe.net/' version='1.0' xmlns:tns='http://ws.demographic.gazelle.ihe.net/' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:element name='CharacterSetEncoding' type='tns:characterSetEncoding'/>
+   <xs:element name='CountryCode' type='tns:countryCode'/>
+   <xs:element name='HL7Exception' type='tns:HL7Exception'/>
+   <xs:element name='IOException' type='tns:IOException'/>
+   <xs:element name='JDOMException' type='tns:JDOMException'/>
+   <xs:element name='SOAPException' type='tns:SOAPException'/>
+   <xs:element name='getListCountryCode' type='tns:getListCountryCode'/>
+   <xs:element name='getListCountryCodeResponse' type='tns:getListCountryCodeResponse'/>
+   <xs:element name='returnAddress' type='tns:returnAddress'/>
+   <xs:element name='returnAddressByCoordinates' type='tns:returnAddressByCoordinates'/>
+   <xs:element name='returnAddressByCoordinatesResponse' type='tns:returnAddressByCoordinatesResponse'/>
+   <xs:element name='returnAddressByTown' type='tns:returnAddressByTown'/>
+   <xs:element name='returnAddressByTownResponse' type='tns:returnAddressByTownResponse'/>
+   <xs:element name='returnAddressResponse' type='tns:returnAddressResponse'/>
+   <xs:element name='returnHl7Message' type='tns:returnHl7Message'/>
+   <xs:element name='returnHl7MessageResponse' type='tns:returnHl7MessageResponse'/>
+   <xs:element name='returnHl7v3Message' type='tns:returnHl7v3Message'/>
+   <xs:element name='returnHl7v3MessageResponse' type='tns:returnHl7v3MessageResponse'/>
+   <xs:element name='returnPatient' type='tns:returnPatient'/>
+   <xs:element name='returnPatientResponse' type='tns:returnPatientResponse'/>
+   <xs:element name='returnPatientWithAllOptions' type='tns:returnPatientWithAllOptions'/>
+   <xs:element name='returnPatientWithAllOptionsResponse' type='tns:returnPatientWithAllOptionsResponse'/>
+   <xs:element name='returnPerson' type='tns:returnPerson'/>
+   <xs:element name='returnPersonResponse' type='tns:returnPersonResponse'/>
+   <xs:element name='returnSimplePatient' type='tns:returnSimplePatient'/>
+   <xs:element name='returnSimplePatientResponse' type='tns:returnSimplePatientResponse'/>
+   <xs:element name='sendHl7Message' type='tns:sendHl7Message'/>
+   <xs:element name='sendHl7MessageResponse' type='tns:sendHl7MessageResponse'/>
+   <xs:element name='sendHl7v3Message' type='tns:sendHl7v3Message'/>
+   <xs:element name='sendHl7v3MessageResponse' type='tns:sendHl7v3MessageResponse'/>
+   <xs:complexType name='returnAddress'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnAddressResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:patientAddress'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='patientAddress'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='city' type='tns:city'/>
+       <xs:element minOccurs='0' name='country' type='tns:countryCode'/>
+       <xs:element minOccurs='0' name='id' type='xs:int'/>
+       <xs:element minOccurs='0' name='lattitude' type='xs:double'/>
+       <xs:element minOccurs='0' name='longitude' type='xs:double'/>
+       <xs:element minOccurs='0' name='number' type='xs:string'/>
+       <xs:element minOccurs='0' name='postalCode' type='xs:string'/>
+       <xs:element minOccurs='0' name='state' type='tns:state'/>
+       <xs:element minOccurs='0' name='street' type='tns:street'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType abstract='true' name='auditModule'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='lastChanged' type='xs:dateTime'/>
+     <xs:element minOccurs='0' name='lastModifier' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='city'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='id' type='xs:int'/>
+       <xs:element minOccurs='0' name='value' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='countryCode'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:int'/>
+     <xs:element minOccurs='0' name='iso' type='xs:string'/>
+     <xs:element minOccurs='0' name='name' type='xs:string'/>
+     <xs:element minOccurs='0' name='printableName' type='xs:string'/>
+     <xs:element minOccurs='0' name='iso3' type='xs:string'/>
+     <xs:element minOccurs='0' name='numcode' type='xs:int'/>
+     <xs:element minOccurs='0' name='ec' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='flagUrl' type='xs:string'/>
+     <xs:element minOccurs='0' name='isLastNameSexed' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='countryOID' type='xs:string'/>
+     <xs:element minOccurs='0' name='characterSetEncodingReference' type='tns:characterSetEncoding'/>
+     <xs:element minOccurs='0' name='generateReligion' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='generateRace' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='minNumberOfPatientMiddleName' type='xs:int'/>
+     <xs:element minOccurs='0' name='maxNumberOfPatientMiddleName' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='characterSetEncoding'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='charset' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='state'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='code' type='xs:string'/>
+       <xs:element minOccurs='0' name='id' type='xs:int'/>
+       <xs:element minOccurs='0' name='name' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='street'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='id' type='xs:int'/>
+       <xs:element minOccurs='0' name='value' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='JDOMException'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='message' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='IOException'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='message' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='SOAPException'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='message' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnAddressByCoordinates'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode' type='xs:string'/>
+     <xs:element name='lattitude' type='xs:double'/>
+     <xs:element name='longitude' type='xs:double'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnAddressByCoordinatesResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:patientAddress'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnAddressByTown'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='townName' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnAddressByTownResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:patientAddress'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnPerson'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode' type='xs:string'/>
+     <xs:element name='lastNameOption' type='xs:boolean'/>
+     <xs:element name='firstNameOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='motherMaidenNameOption' type='xs:boolean'/>
+     <xs:element name='religionOption' type='xs:boolean'/>
+     <xs:element name='raceOption' type='xs:boolean'/>
+     <xs:element name='birthDayOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='genderDescription' type='xs:string'/>
+     <xs:element minOccurs='0' name='firstNameLike' type='xs:string'/>
+     <xs:element minOccurs='0' name='lastNameLike' type='xs:string'/>
+     <xs:element minOccurs='0' name='firstNameIs' type='xs:string'/>
+     <xs:element minOccurs='0' name='lastNameIs' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnPersonResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:person'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='person'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='dateOfBirth' type='xs:dateTime'/>
+       <xs:element minOccurs='0' name='dateOfDeath' type='xs:dateTime'/>
+       <xs:element minOccurs='0' name='firstAlternativeName' type='xs:string'/>
+       <xs:element minOccurs='0' name='firstNameSex' type='tns:firstNameSex'/>
+       <xs:element minOccurs='0' name='lastAlternativeName' type='xs:string'/>
+       <xs:element minOccurs='0' name='lastName' type='tns:lastName'/>
+       <xs:element minOccurs='0' name='maritalStatus' type='xs:string'/>
+       <xs:element minOccurs='0' name='motherMaidenName' type='tns:lastName'/>
+       <xs:element minOccurs='0' name='nameType' type='xs:string'/>
+       <xs:element maxOccurs='unbounded' minOccurs='0' name='otherFirstNameSexList' nillable='true' type='tns:firstNameSex'/>
+       <xs:element maxOccurs='unbounded' minOccurs='0' name='otherNameList' nillable='true' type='tns:otherName'/>
+       <xs:element minOccurs='0' name='race' type='tns:race'/>
+       <xs:element minOccurs='0' name='religion' type='tns:religion'/>
+       <xs:element minOccurs='0' name='sex' type='tns:sex'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='firstNameSex'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='firstName' type='xs:string'/>
+       <xs:element minOccurs='0' name='gender' type='tns:gender'/>
+       <xs:element minOccurs='0' name='id' type='xs:int'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='gender'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='description' type='xs:string'/>
+       <xs:element minOccurs='0' name='id' type='xs:int'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='lastName'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='gender' type='tns:gender'/>
+       <xs:element minOccurs='0' name='value' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='otherName'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='firstNameSex' type='tns:firstNameSex'/>
+       <xs:element minOccurs='0' name='id' type='xs:int'/>
+       <xs:element minOccurs='0' name='lastName' type='tns:lastName'/>
+       <xs:element minOccurs='0' name='nameType' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='race'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='code' type='xs:string'/>
+       <xs:element minOccurs='0' name='description' type='xs:string'/>
+       <xs:element minOccurs='0' name='id' type='xs:int'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='religion'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='code' type='xs:string'/>
+       <xs:element minOccurs='0' name='description' type='xs:string'/>
+       <xs:element minOccurs='0' name='id' type='xs:int'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='sex'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='code' type='xs:string'/>
+       <xs:element minOccurs='0' name='description' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='returnPatientWithAllOptions'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode' type='xs:string'/>
+     <xs:element minOccurs='0' name='lastNameOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='firstNameOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='motherMaidenNameOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='religionOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='raceOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='birthDayOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='addressOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='genderDescription' type='xs:string'/>
+     <xs:element minOccurs='0' name='firstNameLike' type='xs:string'/>
+     <xs:element minOccurs='0' name='lastNameLike' type='xs:string'/>
+     <xs:element minOccurs='0' name='firstNameIs' type='xs:string'/>
+     <xs:element minOccurs='0' name='lastNameIs' type='xs:string'/>
+     <xs:element minOccurs='0' name='maritalSatusOption' type='xs:string'/>
+     <xs:element minOccurs='0' name='deadPatientOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='maidenNameOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='aliasNameOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='displayNameOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='newBornOption' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnPatientWithAllOptionsResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:patient'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='patient'>
+    <xs:complexContent>
+     <xs:extension base='tns:auditModule'>
+      <xs:sequence>
+       <xs:element maxOccurs='unbounded' minOccurs='0' name='address' nillable='true' type='tns:patientAddress'/>
+       <xs:element minOccurs='0' name='country' type='tns:countryCode'/>
+       <xs:element minOccurs='0' name='creationDate' type='xs:dateTime'/>
+       <xs:element minOccurs='0' name='ddsPatientIdentifier' type='xs:string'/>
+       <xs:element minOccurs='0' name='motherPatient' type='tns:patient'/>
+       <xs:element minOccurs='0' name='nationalPatientIdentifier' type='xs:string'/>
+       <xs:element minOccurs='0' name='person' type='tns:person'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='returnPatient'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode' type='xs:string'/>
+     <xs:element minOccurs='0' name='lastNameOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='firstNameOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='religionOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='raceOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='birthDayOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='addressOption' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='genderDescription' type='xs:string'/>
+     <xs:element minOccurs='0' name='firstNameLike' type='xs:string'/>
+     <xs:element minOccurs='0' name='lastNameLike' type='xs:string'/>
+     <xs:element minOccurs='0' name='firstNameIs' type='xs:string'/>
+     <xs:element minOccurs='0' name='lastNameIs' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnPatientResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:patient'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnSimplePatient'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnSimplePatientResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:patient'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnHl7Message'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode' type='xs:string'/>
+     <xs:element minOccurs='0' name='receivingApplication' type='xs:string'/>
+     <xs:element minOccurs='0' name='receivingFacility' type='xs:string'/>
+     <xs:element minOccurs='0' name='characterSet' type='xs:string'/>
+     <xs:element minOccurs='0' name='hl7Version' type='xs:string'/>
+     <xs:element minOccurs='0' name='messageType' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnHl7MessageResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='HL7Exception'>
+    <xs:sequence>
+     <xs:element name='errorCode' type='xs:int'/>
+     <xs:element name='fieldPosition' type='xs:int'/>
+     <xs:element minOccurs='0' name='message' type='xs:string'/>
+     <xs:element minOccurs='0' name='segmentName' type='xs:string'/>
+     <xs:element name='segmentRepetition' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='sendHl7Message'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode' type='xs:string'/>
+     <xs:element minOccurs='0' name='targetHost' type='xs:string'/>
+     <xs:element minOccurs='0' name='targetPort' type='xs:int'/>
+     <xs:element minOccurs='0' name='receivingApplication' type='xs:string'/>
+     <xs:element minOccurs='0' name='receivingFacility' type='xs:string'/>
+     <xs:element minOccurs='0' name='characterSet' type='xs:string'/>
+     <xs:element minOccurs='0' name='hl7Version' type='xs:string'/>
+     <xs:element minOccurs='0' name='messageType' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='sendHl7MessageResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='Hl7MessageRespond' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnHl7v3Message'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode1' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='returnHl7v3MessageResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='sendHl7v3Message'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='countryCode' type='xs:string'/>
+     <xs:element minOccurs='0' name='systemName' type='xs:string'/>
+     <xs:element minOccurs='0' name='url' type='xs:string'/>
+     <xs:element minOccurs='0' name='receivingApplication' type='xs:string'/>
+     <xs:element minOccurs='0' name='receivingFacility' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='sendHl7v3MessageResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='Hl7v3MessageRespond' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getListCountryCode'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getListCountryCodeResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='tns:countryCode'/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+ </types>
+ <message name='JDOMException'>
+  <part element='tns:JDOMException' name='JDOMException'></part>
+ </message>
+ <message name='DemographicDataServer_returnHl7v3Message'>
+  <part element='tns:returnHl7v3Message' name='returnHl7v3Message'></part>
+ </message>
+ <message name='DemographicDataServer_returnHl7v3MessageResponse'>
+  <part element='tns:returnHl7v3MessageResponse' name='returnHl7v3MessageResponse'></part>
+ </message>
+ <message name='DemographicDataServer_returnAddressByTownResponse'>
+  <part element='tns:returnAddressByTownResponse' name='returnAddressByTownResponse'></part>
+ </message>
+ <message name='DemographicDataServer_sendHl7v3Message'>
+  <part element='tns:sendHl7v3Message' name='sendHl7v3Message'></part>
+ </message>
+ <message name='DemographicDataServer_getListCountryCodeResponse'>
+  <part element='tns:getListCountryCodeResponse' name='getListCountryCodeResponse'></part>
+ </message>
+ <message name='DemographicDataServer_returnHl7MessageResponse'>
+  <part element='tns:returnHl7MessageResponse' name='returnHl7MessageResponse'></part>
+ </message>
+ <message name='DemographicDataServer_returnSimplePatient'>
+  <part element='tns:returnSimplePatient' name='returnSimplePatient'></part>
+ </message>
+ <message name='DemographicDataServer_sendHl7Message'>
+  <part element='tns:sendHl7Message' name='sendHl7Message'></part>
+ </message>
+ <message name='DemographicDataServer_sendHl7MessageResponse'>
+  <part element='tns:sendHl7MessageResponse' name='sendHl7MessageResponse'></part>
+ </message>
+ <message name='DemographicDataServer_returnAddress'>
+  <part element='tns:returnAddress' name='returnAddress'></part>
+ </message>
+ <message name='DemographicDataServer_returnPerson'>
+  <part element='tns:returnPerson' name='returnPerson'></part>
+ </message>
+ <message name='DemographicDataServer_returnPatient'>
+  <part element='tns:returnPatient' name='returnPatient'></part>
+ </message>
+ <message name='DemographicDataServer_returnPatientWithAllOptions'>
+  <part element='tns:returnPatientWithAllOptions' name='returnPatientWithAllOptions'></part>
+ </message>
+ <message name='DemographicDataServer_returnAddressResponse'>
+  <part element='tns:returnAddressResponse' name='returnAddressResponse'></part>
+ </message>
+ <message name='DemographicDataServer_returnSimplePatientResponse'>
+  <part element='tns:returnSimplePatientResponse' name='returnSimplePatientResponse'></part>
+ </message>
+ <message name='DemographicDataServer_returnPersonResponse'>
+  <part element='tns:returnPersonResponse' name='returnPersonResponse'></part>
+ </message>
+ <message name='IOException'>
+  <part element='tns:IOException' name='IOException'></part>
+ </message>
+ <message name='DemographicDataServer_returnAddressByCoordinatesResponse'>
+  <part element='tns:returnAddressByCoordinatesResponse' name='returnAddressByCoordinatesResponse'></part>
+ </message>
+ <message name='DemographicDataServer_returnPatientWithAllOptionsResponse'>
+  <part element='tns:returnPatientWithAllOptionsResponse' name='returnPatientWithAllOptionsResponse'></part>
+ </message>
+ <message name='DemographicDataServer_returnAddressByCoordinates'>
+  <part element='tns:returnAddressByCoordinates' name='returnAddressByCoordinates'></part>
+ </message>
+ <message name='HL7Exception'>
+  <part element='tns:HL7Exception' name='HL7Exception'></part>
+ </message>
+ <message name='DemographicDataServer_sendHl7v3MessageResponse'>
+  <part element='tns:sendHl7v3MessageResponse' name='sendHl7v3MessageResponse'></part>
+ </message>
+ <message name='DemographicDataServer_returnHl7Message'>
+  <part element='tns:returnHl7Message' name='returnHl7Message'></part>
+ </message>
+ <message name='DemographicDataServer_returnAddressByTown'>
+  <part element='tns:returnAddressByTown' name='returnAddressByTown'></part>
+ </message>
+ <message name='SOAPException'>
+  <part element='tns:SOAPException' name='SOAPException'></part>
+ </message>
+ <message name='DemographicDataServer_getListCountryCode'>
+  <part element='tns:getListCountryCode' name='getListCountryCode'></part>
+ </message>
+ <message name='DemographicDataServer_returnPatientResponse'>
+  <part element='tns:returnPatientResponse' name='returnPatientResponse'></part>
+ </message>
+ <portType name='DemographicDataServer'>
+  <operation name='getListCountryCode' parameterOrder='getListCountryCode'>
+   <input message='tns:DemographicDataServer_getListCountryCode'></input>
+   <output message='tns:DemographicDataServer_getListCountryCodeResponse'></output>
+  </operation>
+  <operation name='returnAddress' parameterOrder='returnAddress'>
+   <input message='tns:DemographicDataServer_returnAddress'></input>
+   <output message='tns:DemographicDataServer_returnAddressResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+  </operation>
+  <operation name='returnAddressByCoordinates' parameterOrder='returnAddressByCoordinates'>
+   <input message='tns:DemographicDataServer_returnAddressByCoordinates'></input>
+   <output message='tns:DemographicDataServer_returnAddressByCoordinatesResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+  </operation>
+  <operation name='returnAddressByTown' parameterOrder='returnAddressByTown'>
+   <input message='tns:DemographicDataServer_returnAddressByTown'></input>
+   <output message='tns:DemographicDataServer_returnAddressByTownResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+  </operation>
+  <operation name='returnHl7Message' parameterOrder='returnHl7Message'>
+   <input message='tns:DemographicDataServer_returnHl7Message'></input>
+   <output message='tns:DemographicDataServer_returnHl7MessageResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+   <fault message='tns:HL7Exception' name='HL7Exception'></fault>
+  </operation>
+  <operation name='returnHl7v3Message' parameterOrder='returnHl7v3Message'>
+   <input message='tns:DemographicDataServer_returnHl7v3Message'></input>
+   <output message='tns:DemographicDataServer_returnHl7v3MessageResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+  </operation>
+  <operation name='returnPatient' parameterOrder='returnPatient'>
+   <input message='tns:DemographicDataServer_returnPatient'></input>
+   <output message='tns:DemographicDataServer_returnPatientResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+  </operation>
+  <operation name='returnPatientWithAllOptions' parameterOrder='returnPatientWithAllOptions'>
+   <input message='tns:DemographicDataServer_returnPatientWithAllOptions'></input>
+   <output message='tns:DemographicDataServer_returnPatientWithAllOptionsResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+  </operation>
+  <operation name='returnPerson' parameterOrder='returnPerson'>
+   <input message='tns:DemographicDataServer_returnPerson'></input>
+   <output message='tns:DemographicDataServer_returnPersonResponse'></output>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+  </operation>
+  <operation name='returnSimplePatient' parameterOrder='returnSimplePatient'>
+   <input message='tns:DemographicDataServer_returnSimplePatient'></input>
+   <output message='tns:DemographicDataServer_returnSimplePatientResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+  </operation>
+  <operation name='sendHl7Message' parameterOrder='sendHl7Message'>
+   <input message='tns:DemographicDataServer_sendHl7Message'></input>
+   <output message='tns:DemographicDataServer_sendHl7MessageResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+   <fault message='tns:HL7Exception' name='HL7Exception'></fault>
+  </operation>
+  <operation name='sendHl7v3Message' parameterOrder='sendHl7v3Message'>
+   <input message='tns:DemographicDataServer_sendHl7v3Message'></input>
+   <output message='tns:DemographicDataServer_sendHl7v3MessageResponse'></output>
+   <fault message='tns:JDOMException' name='JDOMException'></fault>
+   <fault message='tns:IOException' name='IOException'></fault>
+   <fault message='tns:SOAPException' name='SOAPException'></fault>
+   <fault message='tns:HL7Exception' name='HL7Exception'></fault>
+  </operation>
+ </portType>
+ <binding name='DemographicDataServerBinding' type='tns:DemographicDataServer'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='getListCountryCode'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='returnAddress'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='returnAddressByCoordinates'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='returnAddressByTown'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='returnHl7Message'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+   <fault name='HL7Exception'>
+    <soap:fault name='HL7Exception' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='returnHl7v3Message'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='returnPatient'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='returnPatientWithAllOptions'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='returnPerson'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='returnSimplePatient'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='sendHl7Message'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+   <fault name='HL7Exception'>
+    <soap:fault name='HL7Exception' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='sendHl7v3Message'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='JDOMException'>
+    <soap:fault name='JDOMException' use='literal'/>
+   </fault>
+   <fault name='IOException'>
+    <soap:fault name='IOException' use='literal'/>
+   </fault>
+   <fault name='SOAPException'>
+    <soap:fault name='SOAPException' use='literal'/>
+   </fault>
+   <fault name='HL7Exception'>
+    <soap:fault name='HL7Exception' use='literal'/>
+   </fault>
+  </operation>
+ </binding>
+ <service name='DemographicDataServerService'>
+  <port binding='tns:DemographicDataServerBinding' name='DemographicDataServerPort'>
+   <soap:address location='http://gazelle.ihe.net/DDS-prod-DemographicDataServer-ejb/DemographicDataServerBean'/>
+  </port>
+ </service>
+</definitions>
