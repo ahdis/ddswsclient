@@ -12,6 +12,6 @@ make a runnable jar and start the main class DdsIheGazelleClient in ch.ahdis.ihe
 ### background
 
 ```
-docker build --rm=true -t postgres_db230 .
+wsimport -s ./src/main/java -p ch.ahdis.ihe.pix.ddswsclient.ws  ./src/main/resources/DemographicDataServerService.wsdl
 ```
 
